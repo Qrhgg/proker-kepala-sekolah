@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +20,22 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/', function () {
-    return view('dashboard');
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/postlogin', [AuthController::class, 'postlogin']);
+Route::get('/logout', [AuthController::class, 'logout']);
+
+
+Route::group(['middleware' => 'auth' ], function(){
+
+    Route::get('/', function (){return view('dashboard.index'); 
+    });
+    
+    Route::get('/kategori', [KategoriController::class, 'index']);
+
+
 });
 
-Route::get('/kategori', function () {
-    return view('kategori.index');
-});
+
+
 

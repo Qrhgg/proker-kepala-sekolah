@@ -19,7 +19,7 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/kategori">
             <i class="fas fa-th-list"></i>
             <span>Kategori Progran Kerja</span></a>
     </li>
