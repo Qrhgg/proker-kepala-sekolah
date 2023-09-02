@@ -12,6 +12,8 @@
 
     <title> Dashboard</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
     <!-- Custom fonts for this template-->
     <link href="{{  asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -20,6 +22,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }} " rel="stylesheet">
+
+     <!-- Custom styles for this page -->
+     <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css" ') }}" rel="stylesheet">
+
 
 </head>
 
@@ -97,6 +103,9 @@
         </div>
     </div>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -113,6 +122,12 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js')}}"></script>
+
+    <script src="{{ asset('asset/vendor/datatables/jquery.dataTables.min.js" ') }}"></script>
+    <script src="{{ asset('asset/vendor/datatables/dataTables.bootstrap4.min.js" ') }}"> </script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{  asset('assets/js/demo/datatables-demo.js" ')}}"></script>
 
 </body>
 

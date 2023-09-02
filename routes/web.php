@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProkerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,12 @@ Route::group(['middleware' => 'auth' ], function(){
     });
     
     Route::get('/kategori', [KategoriController::class, 'index']);
+    Route::post('/postkategori', [KategoriController::class, 'store']);
+    Route::post('/ubahkategori/{id}', [KategoriController::class, 'update']);
+    Route::get('/hapuskategori/{id}', [KategoriController::class, 'hapus']);
+
+    Route::get('/proker', [ProkerController::class, 'index']);
+
 
 
 });

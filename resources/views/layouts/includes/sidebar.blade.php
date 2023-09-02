@@ -25,7 +25,7 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/proker">
             <i class="fas fa-database"></i>
             <span>Data Program Kerja</span></a>
     </li>
