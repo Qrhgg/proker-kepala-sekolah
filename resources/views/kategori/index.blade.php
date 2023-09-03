@@ -45,10 +45,10 @@
                         <td>{{ $k->nama_kategori }}</td>
                         <td>
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{ $k->id }}">
-                                Edit 
+                              <i class="fas fa-edit"></i>
                               </button>
 
-                              <a href="/hapuskategori/{{ $k->id }}" class="btn btn-danger" onclick="return confirm('Yakin Hapus Data ?')"> Hapus </a>
+                              <a href="/hapuskategori/{{ $k->id }}" class="btn btn-danger" onclick="return confirm('Yakin Hapus Data ?')"> <i class="fas fa-trash-alt"></i> </a>
 
                             
                        

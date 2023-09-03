@@ -36,8 +36,17 @@ class ProkerController extends Controller
 
         return redirect ('/proker');
 
+    }
+
+
+    public function update(Request $request,$id){
+
+        $proker = Proker::find($id);
+
+        $proker->update($request->all());
+
+            return redirect('/proker');
 
 
     }
-
 }
