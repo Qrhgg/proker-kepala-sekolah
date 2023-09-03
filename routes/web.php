@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProkerController;
+use App\Http\Controllers\KepalasekolahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,11 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::post('/postproker', [ProkerController::class, 'store']);
     Route::post('/ubahproker/{id}', [ProkerController::class, 'update']);
     Route::get('/hapusproker/{id}', [ProkerController::class, 'hapus']);
+
+    Route::get('/kepalasekolah', [KepalasekolahController::class, 'index']);
+    Route::post('/postkepalasekolah', [KepalasekolahController::class, 'store']);
+    Route::post('/ubahkepalasekolah/{id}', [KepalasekolahController::class, 'update']);
+    Route::get('/hapuskepalasekolah/{id}', [KepalasekolahController::class, 'hapus']);
 
 
 

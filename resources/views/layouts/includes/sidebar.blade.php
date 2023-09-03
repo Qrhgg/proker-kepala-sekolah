@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/kepalasekolah">
             <i class="fas fa-user-tie"></i>
             <span>Data Kepala Sekolah</span></a>
     </li>
