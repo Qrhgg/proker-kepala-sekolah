@@ -17,10 +17,6 @@
             </div>
         </div>
 
-        {{-- <h6 class="m-0 font-weight-bold text-primary">Data  Kategori</h6>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-          </button> --}}
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -44,17 +40,17 @@
                     <tr>
                      
                         <td>{{ $loop->iteration }} </td>
-                        <td>{{ $p->id_kategori }} </td>
+                        <td>{{ $p->kategori->nama_kategori }} </td>
                         <td> {{ $p->nama_proker }} </td>
-                        <td> {{ $p->anggaran }}</td>
+                        <td>Rp. {{ $p->anggaran }}</td>
                         <td>  {{ $p->semester }}</td>
-                        <td> {{ $p->tahun }}</td>
+                        <td> {{ $p->tahun->format('Y') }}</td>
                         <td>
-                            {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{ $p->id }}"> --}}
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{ $p->id }}">
                                 Edit 
                               </button>
 
-                              {{-- <a href="/hapuskategori/{{ $k->id }}" class="btn btn-danger" onclick="return confirm('Yakin Hapus Data ?')"> Hapus </a> --}}
+                              <a href="/hapusproker/{{ $p->id }}" class="btn btn-danger" onclick="return confirm('Yakin Hapus Data ?')"> Hapus </a>
 
                             
                        
@@ -71,5 +67,93 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"> Tambah Data Program Kerja</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        
+            <form action="/postproker" method="POST">
+                @csrf
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Nama Kategori</label>
+
+                    <select id="id_kategori" class="form-select" name="id_kategori">
+
+                        <option selected>Pilih Kategori</option>
+                        @foreach($kategori as $k)   
+                        <option value={{ $k->id  }}> {{ $k->nama_kategori }} </option>
+                        @endforeach
+                    </select>
+
+                  </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Nama Program Kerja</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" name="nama_proker">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Anggaran</label>
+                    {{-- <input type="number"  class="form-control" id="anggaran" name="anggaran" oninput="formatNumber(ths)"> --}}
+                        
+                    <input  class="form-control" id="anggaran" name="anggaran" oninput="formatNumber(this)">
+
+                </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Semester</label>
+
+                    <select id="namakategori" class="form-select" name="semester">
+                        <option selected>Pilih Semester </option>
+                         <option value="Semester 1">Semester 1 </option>
+                         <option value="Semester 2">Semester 2 </option>
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Pilih Tanggal</label>
+                    <input type="date" class="form-control" id="exampleInputPassword1" name="tahun">
+                  </div>
+
+
+        </div>
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+    function formatNumber(input) {
+        // Hapus semua karakter selain digit
+        const value = input.value.replace(/\D/g, '');
+
+        // Format angka dengan tanda koma setiap 3 digit
+        input.value = parseFloat(value).toLocaleString('en-US');
+    }
+</script>
+
+
+
+
+
 
 @endsection

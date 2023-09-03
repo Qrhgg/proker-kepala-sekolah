@@ -38,6 +38,12 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('/hapuskategori/{id}', [KategoriController::class, 'hapus']);
 
     Route::get('/proker', [ProkerController::class, 'index']);
+    Route::post('/postproker', [ProkerController::class, 'store']);
+    Route::post('/ubahproker/{id}', [ProkerController::class, 'update']);
+    Route::get('/hapusproker/{id}', [ProkerController::class, 'hapus']);
+
+
+
 
 
 
