@@ -25,44 +25,47 @@
           </button> --}}
     </div>
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Kategori</th>
-                       
-                        <th>Action</th>
+      <div class="table-responsive">
+        <table class="table table-bordered" id="example1" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kategori</th>
+                    <th>Aksi</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+              @foreach($kategori as $k)
+              <tr>
+               
+                  <td> {{ $loop->iteration }}</td>
+                  <td> {{ $k->nama_kategori }} </td>
+          
+                  
+                  <td>
+                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{ $k->id }}">
+                        <i class="fas fa-edit"></i>
+                        </button>
+
+                        <a href="/hapuskategori/{{ $k->id }}" class="btn btn-danger" onclick="return confirm('Yakin Hapus Data ?')"> <i class="fas fa-trash-alt"></i> </a>
+
                       
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    @foreach($kategori as $k)
-                    <tr>
-                     
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $k->nama_kategori }}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{ $k->id }}">
-                              <i class="fas fa-edit"></i>
-                              </button>
+                 
+                      
+                  </td>
+              
+              </tr>
 
-                              <a href="/hapuskategori/{{ $k->id }}" class="btn btn-danger" onclick="return confirm('Yakin Hapus Data ?')"> <i class="fas fa-trash-alt"></i> </a>
-
-                            
-                       
-                            
-                        </td>
-                    
-                    </tr>
-                    
-                    @endforeach
+              @endforeach
+              
 
 
-                </tbody>
-            </table>
-        </div>
+          </tbody>
+
+            </tbody>
+        </table>
+    </div>
     </div>
 </div>
 

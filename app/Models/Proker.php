@@ -8,12 +8,11 @@ use App\Models\kategori;
 
 class Proker extends Model
 {
-    // use HasFactory;
+    use HasFactory;
 
 
     protected $table = "proker";
     protected $fillable = ['id_kategori', 'nama_proker', 'anggaran', 'status', 'semester', 'tahun'];
-    protected $dates = ['tahun'];
 
 
     public function kategori(){

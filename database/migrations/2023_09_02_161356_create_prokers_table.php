@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('anggaran');
             $table->string('status');
             $table->enum('semester',['Semester 1', 'Semester 2']);
-            $table->datetime('tahun');
+            $table->year('tahun');
             $table->timestamps();
         });
     }

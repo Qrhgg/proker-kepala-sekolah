@@ -27,6 +27,9 @@ Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
+Route::get('/admin', function (){return view('layouts.adminlte'); 
+});
+
 
 Route::group(['middleware' => 'auth' ], function(){
 
@@ -37,11 +40,11 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::post('/postkategori', [KategoriController::class, 'store']);
     Route::post('/ubahkategori/{id}', [KategoriController::class, 'update']);
     Route::get('/hapuskategori/{id}', [KategoriController::class, 'hapus']);
-
+    
     Route::get('/proker', [ProkerController::class, 'index']);
     Route::post('/postproker', [ProkerController::class, 'store']);
     Route::post('/ubahproker/{id}', [ProkerController::class, 'update']);
-    Route::get('/hapusproker/{id}', [ProkerController::class, 'hapus']);
+    Route::get('/hapusproker/{id}', [ProkerController::class, 'hapus'])->name('proker.delete');
 
     Route::get('/kepalasekolah', [KepalasekolahController::class, 'index']);
     Route::post('/postkepalasekolah', [KepalasekolahController::class, 'store']);
@@ -49,12 +52,12 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('/hapuskepalasekolah/{id}', [KepalasekolahController::class, 'hapus']);
 
 
+    Route::get('/prokerkp', [ProkerController::class, 'showkp']);
+    Route::post('/update/status/{id}', [ProkerController::class, 'updatestatus']);
+
+
 
 
 
 
 });
-
-
-
-

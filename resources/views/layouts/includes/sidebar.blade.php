@@ -11,6 +11,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    @if(Auth::user()->role == "admin")
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="/kepalasekolah">
@@ -27,14 +28,30 @@
     <li class="nav-item active">
         <a class="nav-link" href="/proker">
             <i class="fas fa-database"></i>
-            <span>Data Program Kerja</span></a>
+            <span>Data Program Kerja </span></a>
     </li>
+
 
     <li class="nav-item active">
         <a class="nav-link" href="index.html">
             <i class="fas fa-print"></i>
             <span>Laporan Program Kerja</span></a>
     </li>
+
+    @endif
+
+
+        @if(Auth::user()->role == "kepala_sekolah")
+             <li class="nav-item active">
+            <a class="nav-link" href="/prokerkp">
+            <i class="fas fa-database"></i>
+            <span> Program Kerja </span></a>
+             </li>
+
+        @endif
+
+
+    
 
 
 
