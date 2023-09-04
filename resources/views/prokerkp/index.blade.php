@@ -29,6 +29,7 @@
                   <th>Anggaran</th>
                   <th>Semester</th>
                   <th>Tahun</th>
+                  <th>Status</th>
                   <th>Aksi</th>
                 </thead>
 
@@ -47,6 +48,60 @@
                           <td>{{ $item->anggaran }}</td>
                           <td>{{ $item->semester }}</td>
                           <td>{{ $item->tahun}}</td>
+                          <td>
+                            @if ($item->status == 1)
+                            <span class="badge text-bg-success">Sudah Dilaporkan</span>
+    
+                            @elseif($item->status == 2)
+                            <span class="badge text-bg-danger">Belum Dilaporkan</span>
+    
+    
+    
+                            @endif
+    
+    
+                                </td>
+
+                                <td>
+
+                                    <form action="/update/status/{{ $item->id }}" method="POST">
+                                        @csrf
+                                    <div class="mb-3">
+        
+        
+                                        
+                          
+                                        <select id="id_kategori" class="form-select" name="status" onclick="status">
+                    
+                                            <option selected>Pilih Status</option>
+                                          
+                                            <option value=2> Belum Dilaporkan </option>
+                                            <option value=1> Sudah Dilaporkan </option>
+                                        </select>
+                                        
+                                        
+                                      </div>
+                    
+                                 
+        
+                                    
+                                      
+                                    
+                                </td>
+        
+                                <td>
+        
+                                    
+                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Perbarui
+                                    </button>
+                                </td>
+                            
+        
+                                    
+                            </form>
+                            
+                          
                           <td>
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{ $item->id }}" id="btn-edit">
                               <i class="fas fa-edit"></i>
