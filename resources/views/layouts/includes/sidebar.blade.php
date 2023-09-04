@@ -11,53 +11,52 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    @if(Auth::user()->role == "admin")
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/kepalasekolah">
-            <i class="fas fa-user-tie"></i>
-            <span>Data Kepala Sekolah</span></a>
-    </li>
+    @if (Auth::user()->role == 'admin')
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="/kepalasekolah">
+                <i class="fas fa-user-tie"></i>
+                <span>Data Kepala Sekolah</span></a>
+        </li>
 
-    <li class="nav-item active">
-        <a class="nav-link" href="/kategori">
-            <i class="fas fa-th-list"></i>
-            <span>Kategori Progran Kerja</span></a>
-    </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/kategori">
+                <i class="fas fa-th-list"></i>
+                <span>Kategori Progran Kerja</span></a>
+        </li>
 
-    <li class="nav-item active">
-        <a class="nav-link" href="/proker">
-            <i class="fas fa-database"></i>
-            <span>Data Program Kerja </span></a>
-    </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/proker">
+                <i class="fas fa-database"></i>
+                <span>Data Program Kerja </span></a>
+        </li>
 
 
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-print"></i>
-            <span>Laporan Program Kerja</span></a>
-    </li>
-
+        <li class="nav-item active">
+            <a class="nav-link" href="/lapor-proker">
+                <i class="fas fa-print"></i>
+                <span>Laporan Program Kerja</span></a>
+        </li>
     @endif
 
 
-        @if(Auth::user()->role == "kepala_sekolah")
-             <li class="nav-item active">
-                <a class="nav-link" href="/prokerkp">
-                    <i class="fas fa-database"></i>
-                    <span>Data Program Kerja </span>
-                </a>
-             </li>
-             <li class="nav-item active">
-                <a class="nav-link" href="/lapor-proker-kp">
-                    <i class="fas fa-database"></i>
-                    <span>Laporan Program Kerja </span>
-                </a>
-             </li>
-        @endif
+    @if (Auth::user()->role == 'kepala_sekolah')
+        <li class="nav-item active">
+            <a class="nav-link" href="/prokerkp">
+                <i class="fas fa-database"></i>
+                <span>Data Program Kerja </span>
+            </a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/lapor-proker-kp">
+                <i class="fas fa-database"></i>
+                <span>Laporan Program Kerja </span>
+            </a>
+        </li>
+    @endif
 
 
-    
+
 
 
 
@@ -67,7 +66,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-   
+
 
     <!-- Nav Item - Pages Collapse Menu -->
     {{-- <li class="nav-item">
@@ -98,15 +97,15 @@
     <!-- Divider -->
 
     <!-- Heading -->
-  
+
     <!-- Nav Item - Pages Collapse Menu -->
-   
+
 
     <!-- Nav Item - Charts -->
-    
+
 
     <!-- Nav Item - Tables -->
-   
+
     <!-- Divider -->
 
     <!-- Sidebar Toggler (Sidebar) -->
@@ -115,5 +114,5 @@
     </div>
 
     <!-- Sidebar Message -->
-    
+
 </ul>

@@ -10,18 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class KepalasekolahController extends Controller
 {
-    public function index(){
-
-
+    public function index()
+    {
         $kepala_sekolah = Kepalasekolah::all();
 
-
         return view('kepalasekolah.index', ['kepala_sekolah' => $kepala_sekolah]);
-
     }
 
-    public function store(Request $request){
-
+    public function store(Request $request)
+    {
         $user = new User;
 
         $user->role = "kepala_sekolah";
@@ -31,54 +28,41 @@ class KepalasekolahController extends Controller
         $user->remember_token = Str::random(60);
         $user->save();
 
-
-
-        $kepala_sekolah = Kepalasekolah::create([
+        Kepalasekolah::create([
             'user_id' => $user->id,
             'nip'      => $request->nip,
             'nama_kepalasekolah' => $request->nama_kepalasekolah,
             'alamat' => $request->alamat,
             'no_hp'    => $request->no_hp,
-
-
-
         ]);
 
         return redirect('/kepalasekolah');
-
     }
 
 
-    public function update(Request $request, $id){
-
+    public function update(Request $request, $id)
+    {
         $kepalasekolah = Kepalasekolah::find($id);
         $kepalasekolah->update($request->all());
         $user = DB::table('users')
-        ->where('id', $kepalasekolah->user_id)
-        ->update([
-            'name' => $request->nama_kepalasekolah,
+            ->where('id', $kepalasekolah->user_id)
+            ->update([
+                'name' => $request->nama_kepalasekolah,
 
-            'password' => bcrypt ($request->password)
-        
-        ]);
+                'password' => bcrypt($request->password)
+
+            ]);
 
         return redirect('/kepalasekolah');
-        
-
-
     }
 
-    public function hapus($id){
-
+    public function hapus($id)
+    {
         $kepalasekolah = Kepalasekolah::find($id);
         $user = User::where('id', $kepalasekolah->user_id)->delete();
 
         $kepalasekolah->delete();
 
-
         return redirect('/kepalasekolah');
-
     }
-
-
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,18 +61,19 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        
-                                        <button class="btn btn-primary btn-user btn-block" type="submit"> Login </button>
+
+                                        <button class="btn btn-primary btn-user btn-block" type="submit"> Login
+                                        </button>
                                         {{-- <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a> --}}
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        {{-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        </a> --}}
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -95,14 +95,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{  asset('assets/vendor/jquery/jquery.min.js" ') }}"></script>
-    <script src="{{  asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js" ') }}" ></script>
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js" ') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js" ') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{  asset('assets/vendor/jquery-easing/jquery.easing.min.js" ')}}"></script>
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js" ') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{  asset('assets/js/sb-admin-2.min.js" ') }}"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js" ') }}"></script>
 
 </body>
 
