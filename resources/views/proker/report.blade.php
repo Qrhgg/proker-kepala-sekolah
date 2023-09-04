@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <a href="{{ route('print.proker.kp', "?id_kategori=$id_kategori&tahun=$tahun&search=$search") }}"
+                    <a href="{{ route('print.proker', "?id_kategori=$id_kategori&tahun=$tahun&search=$search") }}"
                         target="_blank" class="btn btn-primary float-right">
                         <i class="fa fa-print"></i></i> Unduh Rekap
                     </a>
