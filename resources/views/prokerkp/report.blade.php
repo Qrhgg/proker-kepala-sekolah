@@ -7,21 +7,58 @@
     <div class="card-header py-3">
         <div class="row">
             <div class="col-md-6">
-                <h6 class="m-0 font-weight-bold text-primary">Data  Program Kerja</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Laporan Data  Program Kerja</h6>
             </div>
 
-            {{-- <div class="col-md-6">
-                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Tambah Data 
-                  </button>
-            </div> --}}
+            <div class="col-md-6">
+              <a href="{{ route('print.proker', "?id_kategori=$id_kategori&tahun=$tahun&search=$search") }}" target="_blank" class="btn btn-primary float-right">
+                <i class="fa fa-print"></i></i> Unduh Rekap
+              </a>
+            </div>
         </div>
 
     </div>
     <div class="card-body">
         <div class="table-responsive">
-          {{-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> --}}
-            <table class="table table-bordered" id="example1" width="100%" cellspacing="0">
+          <form action="/lapor-proker-kp" method="get">
+            @csrf
+          <div class="row g-3 align-items-center">
+            <div class="col-3">
+              <label for="kategori" class="col-form-label">Pilih Kategori</label>
+              <select id="kategori" class="form-select" name="id_kategori">                                          
+                <option value="{{ null }}"> Semua Kategori </option>
+                @foreach ($kategori as $item)
+                  <option value="{{ $item->id }}" {{ $item->id == $id_kategori ? 'selected' : '' }}>{{ $item->nama_kategori }}</option>                    
+                @endforeach
+            </select>
+            </div>
+            <div class="col-3">
+              
+              @php
+                            $oldYear = \Carbon\Carbon::now()->subYears(10)->format('Y');
+                            $futureYear = \Carbon\Carbon::now()->addYears(3)->format('Y');;
+                        @endphp
+              <label for="tahun" class="col-form-label">Pilih Tahun</label>
+              <select id="tahun" class="form-select" name="tahun">                                          
+                <option value="{{ null }}">Semua Tahun </option>                          
+                        @for($i = $oldYear; $i < $futureYear; $i++)
+                          <option value="{{ $i }}" {{ $i == $tahun ? 'selected' : ''}} >{{ $i }}</option>
+                        @endfor
+            </select>
+          </div>
+            <div class="col-3">
+              <label for="search" class="col-form-label">Search</label>
+              <input type="search" value="{{ $search }}" class="form-control" name="search" id="search">
+          </div>
+            <div class="col-3">
+              <button type="submit" class="btn btn-primary" style="margin-top:8%">Search</button>              
+            </select>
+            </div>
+          </div>
+        </form><br>
+            <table class="table table-bordered" 
+            id="example1"
+             width="100%" cellspacing="0">
                 <thead>
                   <th>No</th>
                   <th>Kategori</th>
@@ -30,9 +67,11 @@
                   <th>Semester</th>
                   <th>Tahun</th>
                   <th>Status</th>
-                  <th>Aksi</th>
                 </thead>
-
+                <tbody>
+                  @php
+                      $total = 0;
+                  @endphp
                   @foreach($datas as $data)
                   
                   @if ($data->prokers->toArray() != [])
@@ -40,6 +79,9 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $data->nama_kategori }}</td>                      
                       @foreach ($data->prokers as $item)
+                      @php
+                          $total += str_replace(',', '', $item->anggaran);
+                      @endphp
                       <td>
                         <tr>
                           <td></td>
@@ -48,64 +90,13 @@
                           <td>{{ $item->anggaran }}</td>
                           <td>{{ $item->semester }}</td>
                           <td>{{ $item->tahun}}</td>
-                          {{-- <td>
+                          <td>
                             @if ($item->status == 1)
-                            <span class="badge text-bg-success">Sudah Dilaporkan</span>
-    
+                            <span class="badge text-bg-success">Sudah Dilaporkan</span>    
                             @elseif($item->status == 2)
                             <span class="badge text-bg-danger">Belum Dilaporkan</span>
-    
-    
-    
                             @endif
-    
-    
-                                </td> --}}
-
-                                <td>
-
-                                    <form action="/update/status/{{ $item->id }}" method="POST">
-                                        @csrf
-                                    <div class="mb-3">
-        
-        
-                                        
-                          
-                                        <select id="id_kategori" class="form-select {{ $item->status == 2 ? 'bg-danger' : 'bg-success' }} text-white" name="status" onclick="status">                                          
-                                            <option value="2" {{ $item->status == 2 ? 'selected' : '' }}>Belum Dilaporkan</option>
-                                            <option value="1" {{ $item->status == 1 ? 'selected' : '' }}>Sudah Dilaporkan</option>
-                                        </select>
-                                        
-                                        
-                                      </div>
-                    
-                                 
-        
-                                    
-                                      
-                                    
-                                </td>
-        
-                                <td>
-        
-                                    
-                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Perbarui
-                                    </button>
-                                </td>
-                            
-        
-                                    
-                            </form>
-                            
-                          
-                          {{-- <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{ $item->id }}" id="btn-edit">
-                              <i class="fas fa-edit"></i>
-                              </button>
-
-                              <a href="{{ route('proker.delete', $item->id) }}" class="btn btn-danger" onclick="return confirm('Yakin Hapus Data ?')"> <i class="fas fa-trash-alt"></i> </a>
-                          </td> --}}
+                          </td>
                         </tr>
                       </td>                        
                       @endforeach                 
@@ -114,11 +105,12 @@
                   @endif
                     
                   @endforeach
-               
-
-                    
-
                 </tbody>
+                <tfoot>
+                  <th colspan="3"> Total</th>
+                  <th>{{number_format($total) }}</th>
+                  <th colspan="3"></th>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -209,7 +201,7 @@
   </div> --}}
 
 
-  @foreach($prokers as $p)
+  {{-- @foreach($prokers as $p)
     <!-- Modal Edit -->
     <div class="modal fade" id="modaledit{{ $p->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -243,7 +235,7 @@
 
                   <div class="mb-3">
                       <label for="anggaran" class="form-label">Anggaran Dikeluarkan</label>
-                      {{-- <input type="number"  class="form-control" id="anggaran" name="anggaran" oninput="formatNumber(ths)"> --}}
+                      <input type="number"  class="form-control" id="anggaran" name="anggaran" oninput="formatNumber(ths)">
                           
                       <input  class="form-control" id="anggaran" name="anggaran" oninput="formatNumber(this)" value="{{ $p->anggaran }}">
 
@@ -283,7 +275,7 @@
         </div>
       </div>
     </div>
-  @endforeach
+  @endforeach --}}
 <script>
     function formatNumber(input) {
         // Hapus semua karakter selain digit
