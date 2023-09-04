@@ -54,6 +54,8 @@ Route::group(['middleware' => 'auth' ], function(){
 
     Route::get('/prokerkp', [ProkerController::class, 'showkp']);
     Route::post('/update/status/{id}', [ProkerController::class, 'updatestatus']);
+    Route::get('/lapor-proker-kp', [ProkerController::class, 'reportProgramKerjakp']);
+    Route::get('/print-lapor-proker-kp', [ProkerController::class, 'PrintReportProgramKerjakp'])->name('print.proker');
 
 
 

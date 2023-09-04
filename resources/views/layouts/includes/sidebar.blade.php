@@ -43,11 +43,17 @@
 
         @if(Auth::user()->role == "kepala_sekolah")
              <li class="nav-item active">
-            <a class="nav-link" href="/prokerkp">
-            <i class="fas fa-database"></i>
-            <span> Program Kerja </span></a>
+                <a class="nav-link" href="/prokerkp">
+                    <i class="fas fa-database"></i>
+                    <span>Data Program Kerja </span>
+                </a>
              </li>
-
+             <li class="nav-item active">
+                <a class="nav-link" href="/lapor-proker-kp">
+                    <i class="fas fa-database"></i>
+                    <span>Laporan Program Kerja </span>
+                </a>
+             </li>
         @endif
 
 
